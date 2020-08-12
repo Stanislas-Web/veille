@@ -25,7 +25,7 @@
 </form>
 
         <?php
-
+        if(isset($_POST['valider'])){
         // On récupère les variables envoyées par le formulaire
         $id = $_POST['id'];
       
@@ -46,7 +46,7 @@
         // }
 
 
-
+        }
 
         ?>
             

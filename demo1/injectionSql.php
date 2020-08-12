@@ -26,50 +26,21 @@
     <label>password</label>
     <input type="password" name="password" placeholder="password">
   </div>
-  <button class="ui button"  type="submit">connexion</button>
+  <button class="ui button" name="connexion" type="submit">connexion</button>
 </form>
 
          <?php 
-
+        if(isset($_POST['connexion'])){
         // On récupère les variables envoyées par le formulaire
-        // $login = $_POST['login'];
-        // $password = $_POST['password'];
+        $login = $_POST['login'];
+        $password = $_POST['password'];
 
-        // // Connexion à la BDD en PDO
-        // try { $bdd = new PDO('mysql:host=localhost;dbname=veille','root',''); }
-        // catch (Exeption $e) { die('Erreur : ' .$e->getMessage())  or die(print_r($bdd->errorInfo())); }
+        // Connexion à la BDD en PDO
+        try { $bdd = new PDO('mysql:host=localhost;dbname=veille','root',''); }
+        catch (Exeption $e) { die('Erreur : ' .$e->getMessage())  or die(print_r($bdd->errorInfo())); }
 
-        // // Requête SQL
-        // $req = $bdd->query("SELECT * FROM users WHERE login='$login'  AND password='$password'");
-        // $data = $req->fetch();
-        // $count = $req->rowCount();
-
-        // if($count > 0){
-    
-        //     echo "vous etes en tant que ".$data["login"];
-
-        // }else{
-        //     echo "vous n'avez pas de compte";
-        // }
-
-
-
-
-        ?>
-
-<?php
-
-// On récupère les variables envoyées par le formulaire
-$login = $_POST['login'];
-$password = $_POST['password'];
-
-// Connexion à la BDD en PDO
-try { $bdd = new PDO('mysql:host=localhost;dbname=veille','root',''); }
-catch (Exeption $e) { die('Erreur : ' .$e->getMessage())  or die(print_r($bdd->errorInfo())); }
-
-// Requête SQL sécurisée
-$req = $bdd->prepare("SELECT * FROM users WHERE login= ? AND password= ?");
-$req->execute(array($login, $password));
+        // Requête SQL
+        $req = $bdd->query("SELECT * FROM users WHERE login='$login'  AND password='$password'");
         $data = $req->fetch();
         $count = $req->rowCount();
 
@@ -80,6 +51,38 @@ $req->execute(array($login, $password));
         }else{
             echo "vous n'avez pas de compte";
         }
+
+    }
+
+
+
+
+        ?>
+
+<?php
+// if(isset($_POST['connexion'])){
+// // On récupère les variables envoyées par le formulaire
+// $login = $_POST['login'];
+// $password = $_POST['password'];
+
+// // Connexion à la BDD en PDO
+// try { $bdd = new PDO('mysql:host=localhost;dbname=veille','root',''); }
+// catch (Exeption $e) { die('Erreur : ' .$e->getMessage())  or die(print_r($bdd->errorInfo())); }
+
+// // Requête SQL sécurisée
+// $req = $bdd->prepare("SELECT * FROM users WHERE login= ? AND password= ?");
+// $req->execute(array($login, $password));
+//         $data = $req->fetch();
+//         $count = $req->rowCount();
+
+//         if($count > 0){
+    
+//             echo "vous etes en tant que ".$data["login"];
+
+//         }else{
+//             echo "vous n'avez pas de compte";
+//         }
+//     }
 
 ?>
             

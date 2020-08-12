@@ -12,7 +12,7 @@
 <body>
 
         <style>
-            
+
             body{
                     padding: 80px;
                 }
@@ -23,16 +23,20 @@
   <div class="field">
   <input type="text" name="text" placeholder="password">
     </div>
-  <button class="ui button"  type="submit">Envoyer</button>
+  <button class="ui button" name="valider" type="submit">valider</button>
 </form>
 
         <?php   
             // $_POST["text"] = strip_tags($_POST["text"]);   
                     // echo $_POST['text'] ;
 
+                if(isset($_POST['valider'])){
+
                 $_POST["text"] = strip_tags($_POST['text']);    
 
-               echo $_POST["text"];     
+               echo $_POST["text"];  
+                                   
+            }   
 
 
    
